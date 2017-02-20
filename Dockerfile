@@ -14,7 +14,7 @@ ENV STORM_MIRROR ${STORM_MIRROR:-http://apache.mirrors.pair.com}
 LABEL Description "Apache Storm docker image" \
       Vendor "Christian González" \
       Name "Apache Storm" \
-      Version ${VERSION}
+      Version ${STORM_VERSION}
 
 LABEL Build "docker build --no-cache --rm \
             --build-arg STORM_VERSION=1.0.2 \
@@ -39,6 +39,9 @@ RUN apk --no-cache --update add \
     && mkdir -p /opt/apache-storm/storm-local \
     && rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
 
+# create folser for aws credentials (to share folder wit user)
+RUN mkdir ~/.aws
+
 # Environment variables
 ENV container docker
 ENV STORM_HOME "/opt/apache-storm"
@@ -57,7 +60,7 @@ EXPOSE 8080 8000 6627 6700 6701 6702 6703
 
 WORKDIR /opt/apache-storm
 
-VOLUME ["/opt/apache-storm/conf", "/opt/apache-storm/logs", "/opt/apache-storm/storm-local", "/tmp"]
+VOLUME ["/opt/apache-storm/conf", "/opt/apache-storm/logs", "/opt/apache-storm/storm-local", "/tmp", "/root/.aws"]
 
 ENTRYPOINT ["/bin/start-up-daemons.sh"]
 CMD ["nimbus","ui","supervisor","logviewer","drpc"]
