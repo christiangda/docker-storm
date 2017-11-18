@@ -15,7 +15,7 @@ Apache Storm Docker container
 3. [Usage - Configuration options and additional functionality](#usage)
 4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 6. [Development - Guide for contributing to the module](#development)
-7. [Authors - Who is contributing to do it](#authors)
+7. [Authors - Who is contributing to does it](#authors)
 8. [License](#license)
 9. [Acknowledgment](#acknowledgment)
 
@@ -165,15 +165,20 @@ docker exec -ti <CONTAINER ID from 'docker ps' command> /bin/bash
 
 # Development
 
-If you want to cooperate with this project, please visit [my Github Repo](https://github.com/christiangda/docker-storm)
+If you want to cooperate with this project, please visit [my Github Repo](https://github.com/christiangda/docker-storm) and fork it, then made your own
+chagest and prepare a git pull request
 
 To build this container, execute the following command
 ```script
+git clone https://github.com/christiangda/docker-storm
+cd docker-storm/
 docker build --no-cache --rm --tag <your name>/storm
 ```
 
-the parametrized procedure is
+the parametrized's procedure is
 ```script
+git clone https://github.com/christiangda/docker-storm
+cd docker-storm/
 docker build --no-cache --rm \
             --build-arg ZK_VERSION=3.4.9 \
             --build-arg ZK_MIRROR=http://apache.mirrors.pair.com \
@@ -185,11 +190,12 @@ docker build --no-cache --rm \
 
 [Christian González](https://github.com/christiangda)
 
-# License
 
-This module is released under the GNU General Public License Version 3:
+## License
 
-* [http://www.gnu.org/licenses/gpl-3.0-standalone.html](http://www.gnu.org/licenses/gpl-3.0-standalone.html)
+This module is released under the Apache License Version 2.0:
+
+* [http://www.apache.org/licenses/LICENSE-2.0.html](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 # Acknowledgment
 
